@@ -1,0 +1,12 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+login:
+    path:      /login
+    # uses a special syntax to point to the controller
+    defaults:  { _controller: AppBundle:Login:name }
+
+login_error:
+    path:      /login/error
+    defaults:  { _controller: AppBundle:Login:error }

@@ -1,0 +1,46 @@
+AppBundle\Entity\Comment:
+    type: entity
+    repositoryClass: AppBundle\Entity\CommentRepository
+    table: comment
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        date:
+            type: bigint
+            nullable: false
+            unsigned: true
+        text:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        userId:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: user_id
+        postId:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: post_id
+        manyToOne:
+            fk_userId:
+                targetEntity: AppBundle\Entity\User
+                joinColumn:
+                    name: userId
+                    referencedColumnName: id
+                    nullable: false
+            fk_postId:
+                targetEntity: AppBundle\Entity\Post
+                joinColumn:
+                    name: postId
+                    referencedColumnName: id
+                    nullable: false
+    lifecycleCallbacks: {  }

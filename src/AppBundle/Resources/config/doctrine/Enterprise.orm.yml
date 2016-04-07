@@ -1,0 +1,43 @@
+AppBundle\Entity\Enterprise:
+    type: entity
+    table: enterprise
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        address:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        dateIni:
+            type: bigint
+            nullable: false
+            unsigned: true
+            column: date_ini
+        city:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        postalCode:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: postal_code
+        description:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+    lifecycleCallbacks: {  }

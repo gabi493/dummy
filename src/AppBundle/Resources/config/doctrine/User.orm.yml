@@ -1,0 +1,46 @@
+AppBundle\Entity\User:
+    type: entity
+    repositoryClass: AppBundle\Entity\UserRepository
+    table: user
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        mail:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        username:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        password:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        rol:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+        enterpriseId:
+            type: integer
+            nullable: false
+            unsigned: true
+            column: enterprise_id
+        manyToOne:
+            fk_enterpriseId:
+                targetEntity: AppBundle\Entity\Enterprise
+                joinColumn:
+                    name: enterpriseId
+                    referencedColumnName: id
+                    nullable: false
+    lifecycleCallbacks: {  }
