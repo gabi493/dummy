@@ -2,9 +2,14 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+root:
+    path:      /
+    # uses a special syntax to point to the controller
+    #defaults:  { _controller: AppBundle:Login:name }
+    defaults:  { _controller: AppBundle:Login:index }
+
 login:
     path:      /login
-    # uses a special syntax to point to the controller
     defaults:  { _controller: AppBundle:Login:name }
 
 login_error:
