@@ -1,0 +1,14 @@
+{% block stylesheets %}
+    <link href="{{ asset('css/styles.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+{{ form_start(submit) }}
+    {{ form_errors(submit) }}
+
+    {{ form_row(submit.mail) }}
+    {{ form_row(submit.username) }}
+    {{ form_row(submit.password) }}
+    {{ form_row(submit.rol) }}
+
+    {{ form_widget(submit) }}
+{{ form_end(submit) }}

@@ -19,3 +19,7 @@ login_error:
 xlogin:
     path:      /login/X
     defaults:  { _controller: AppBundle:Login:xlogin }
+
+submit_successful:
+    path:      /submitted
+    defaults:  { _controller: AppBundle:Login:submitted }

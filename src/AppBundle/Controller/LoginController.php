@@ -10,6 +10,8 @@ use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Validator\Constraints\EmailValidator;
 
 class LoginController extends Controller
 {
@@ -34,24 +36,28 @@ class LoginController extends Controller
     public function indexAction(Request $request)
     {
         // create a task and give it some dummy data for this example
-        $user = new User();
+        //$user = new User();
+        $user = $this->getUser();
 
         $form = $this->createFormBuilder($user)
             ->add('username', TextType::class)
             ->add('password', PasswordType::class)
-            ->add('save', SubmitType::class, array('label' => 'Login'))
-            ->add('createUser', SubmitType::class, array('label' => 'Create new user'))
+            ->add('enter', SubmitType::class, array('label' => 'Login'))
+            ->add('createUser', SubmitType::class, array('label' => 'I am new here'))
             ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // ... perform some action, such as saving the task to the database
-            if ($form->get('save')->isClicked()) {
+            if ($form->get('enter')->isClicked()) {
                 return $this->redirectToRoute('login');
             }
             else if ($form->get('createUser')->isClicked()) {
-                return $this->redirectToRoute('xlogin');
+            /*    $em = $this->getDoctrine()->getManager();
+                $em->persist($form->get('username'));
+                $em->flush();
+            */    return $this->redirectToRoute('xlogin');
             }
 
         }
@@ -87,10 +93,50 @@ class LoginController extends Controller
                 '<html><body>Error (we are talking about your life)</body></html>'
             );
         }
-    public function xloginAction()
+    public function xloginAction(Request $request)
     {
-        return new Response(
+        $user = new User();
+        $name = $request->get('username');
+
+        $submit = $this->createFormBuilder($user)
+            ->add('mail', EmailType::class)
+            ->add('username', TextType::class)
+            ->add('password', PasswordType::class)
+            ->add('rol', TextType::class)
+            ->add('createUser', SubmitType::class, array('label' => 'Submit'))
+            ->getForm();
+
+        $submit->handleRequest($request);
+
+        if ($submit->isSubmitted() && $submit->isValid()) {
+            // ... perform some action, such as saving the task to the database
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('submit_successful');
+        }
+
+        return $this->render('login/submit.html.twig', array(
+            'submit' => $submit->createView(),
+        ));
+
+/*        }
+        else return new Response(
             '<html><body>_.-·xxXxx·-._</body></html>'
+        );
+*/    }
+
+    public function submittedAction() {
+        return new Response(
+            '<html>
+                <body>
+                    <h1>
+                    SUCCESSFULLY SUBMITTED
+                    </h1>
+                    <h2>Check your e-mail to confirm your login</h2>
+                    <h3><a href="LoginController.php">Go to login page</a></h3>
+                </body>
+             </html>'
         );
     }
 }
