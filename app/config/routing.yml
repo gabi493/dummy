@@ -15,3 +15,7 @@ login:
 login_error:
     path:      /login/error
     defaults:  { _controller: AppBundle:Login:error }
+
+xlogin:
+    path:      /login/X
+    defaults:  { _controller: AppBundle:Login:xlogin }
