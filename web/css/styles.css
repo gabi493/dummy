@@ -1,3 +1,4 @@
+/* /dummy/web/css/styles.css */
 form {
     /* Sólo para centrar el formulario a la página */
     margin: 300px auto;
@@ -29,7 +30,7 @@ input {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 
-    /* Para armonizar el look&feel del borde en los campos de texto */
+    /* Para armonizar el borde en los campos de texto */
     border: 1px solid #999;
 }
 
