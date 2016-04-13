@@ -136,11 +136,13 @@ class LoginController extends Controller
 
         $submit->handleRequest($request);
 
-        if ($submit->isSubmitted() && $submit->isValid() && $submit->isPasswordLegal()) {
+        if ($submit->isSubmitted() && $submit->isValid() /*&& $submit->isPasswordLegal()*/) {
             // ... perform some action, such as saving the task to the database
-        /*    $em = $this->getDoctrine()->getManager();
+          //  $submit->getEnterpriseId
+            $em = $this->getDoctrine()->getManager();
             $em->persist($user);
-            $em->flush();*/
+            $em->flush();
+
             return $this->redirectToRoute('submit_successful');
         }
 
@@ -154,9 +156,9 @@ class LoginController extends Controller
         );
 */    }
 
-    public function isPasswordLegal() {
+    /*public function isPasswordLegal() {
         return $this->firstName !== $this->password;
-    }
+    }*/
 
     public function submittedAction() {
         return new Response(
