@@ -10,7 +10,13 @@ root:
 
 login:
     path:      /login
-    defaults:  { _controller: AppBundle:Login:name }
+    defaults:  { _controller: AppBundle:Login:login }
+
+login_test:
+    path:      /login/test
+    defaults:  { _controller: AppBundle:Login:test }
+
+
 
 login_error:
     path:      /login/error
@@ -23,3 +29,4 @@ newlogin:
 submit_successful:
     path:      /submitted
     defaults:  { _controller: AppBundle:Login:submitted }
+

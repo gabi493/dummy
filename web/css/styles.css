@@ -20,6 +20,11 @@ label {
     text-align: right;
 }
 
+.message {
+    margin-top: 1em;
+    text-align: center;
+}
+
 input {
     /* Para asegurarse de que todos los campos de texto tienen las mismas propiedades de fuente
        Por defecto, las areas de texto tienen una fuente con monospace */

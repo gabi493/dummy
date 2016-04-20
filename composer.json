@@ -23,11 +23,14 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "knplabs/knp-menu-bundle": "^2.0",
         "behat/behat": "~3.0.4",
-        "phpunit/phpunit": "~4.1.0"
+        "phpunit/phpunit": "~4.1.0",
+        "behat/mink-goutte-driver": "^1.2",
+        "behat/mink": "^1.7"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
-        "symfony/phpunit-bridge": "~2.7"
+        "symfony/phpunit-bridge": "~2.7",
+        "behat/symfony2-extension": "^2.1"
     },
     "scripts": {
         "post-install-cmd": [

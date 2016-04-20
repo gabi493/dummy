@@ -1,0 +1,16 @@
+{% block stylesheets %}
+    <link href="{{ asset('css/loginFormTest.css') }}" type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+
+    {% block body %}
+        <div>
+            <label class="title">Login Form Test:</label>
+        </div>
+        {% if output is defined  %}
+            {# codigo html con el aspecto del error > #}
+            <div class="message">
+                <message id="message">{{ output.command }}</message>
+                <message id="message">{{ output.salida }}</message>
+            </div>
+        {% endif %}
+    {% endblock %}
