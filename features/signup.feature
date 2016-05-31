@@ -31,3 +31,8 @@ Feature: Sign up
     When I try to "sign" to the system without an e-mail, username or password
     Then I should see the signup error message "Fill in all the fields"
 
+  Scenario: Sign up to the system with all the required data
+    Given I am not registered
+    When I try to "sign" to the system with the e-mail "gabriel.carrillo.lopez@everis.com", the username "Wenceslao", the password "999999999", the rol "Administrador" and the enterprise "Empresa 1"
+    Then I should see the welcome title "Welcome Wenceslao!"
+

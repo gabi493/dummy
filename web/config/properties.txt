@@ -13,7 +13,7 @@
 ####    2: BrowserKit
 ####    3: Selenium2 (visual->firefox)
 ####    4: Selenium2 (visual->chrome)
-[Driver] = 4
+[Driver] = 1
 
 ###### Insert here the user case you want to execute (the letter)
 ####    a: Everything
@@ -33,7 +33,7 @@
 [SignupEmail] = gabriel.carrillo.lopez@everis.com
 [SignupUsername] = gabriel
 [SignupPassword] = gabriel
-[SignupRol] = 1
+[SignupRol] = 3
 [SignupEnterprise] = 1
 
 ###### Insert here the INCORRECT user's mail (not containing an @), username (shorter than 6 characters) and password  (shorter than 6 characters)

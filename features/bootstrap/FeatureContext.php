@@ -572,6 +572,10 @@ class FeatureContext extends WebTestCase implements Context, SnippetAcceptingCon
             $this->signupRegisterForm->fillField('mail', $this->_wrongSignupEmail); //<-------------
             $this->signupRegisterForm->fillField('username', $this->_signupUsername);
             $this->signupRegisterForm->fillField('password', $this->_signupPassword);
+            $rolSelector = $this->signupPage->find('xpath', '//select[@id = "rols"]');
+            $rolSelector -> selectOption($this->_signupRol);
+            $enterpriseSelector = $this->signupPage->find('xpath', '//select[@id = "enterprises"]');
+            $enterpriseSelector -> selectOption($this->_signupEnterprise);
             $this->signupRegisterForm->pressButton('submit');
 
             return $this->signupPage;
@@ -598,6 +602,10 @@ class FeatureContext extends WebTestCase implements Context, SnippetAcceptingCon
             $this->signupRegisterForm->fillField('mail', $this->_signupEmail);
             $this->signupRegisterForm->fillField('username', $this->_wrongSignupUsername); //<-------------
             $this->signupRegisterForm->fillField('password', $this->_signupPassword);
+            $rolSelector = $this->signupPage->find('xpath', '//select[@id = "rols"]');
+            $rolSelector -> selectOption($this->_signupRol);
+            $enterpriseSelector = $this->signupPage->find('xpath', '//select[@id = "enterprises"]');
+            $enterpriseSelector -> selectOption($this->_signupEnterprise);
             $this->signupRegisterForm->pressButton('submit');
 
             return $this->signupPage;
@@ -612,10 +620,7 @@ class FeatureContext extends WebTestCase implements Context, SnippetAcceptingCon
      */
     public function iTryToToTheSystemWithAPasswordShorterThanCharacters($arg1, $arg2)
     {
-//        $this->signupPage = $this->signupSession->getPage();
         if ($arg1 == 'sign') {
-//            $signupRegisterForm = $this->signupPage->find('css', 'form');
-
             if (null === $this->signupRegisterForm) {
                 throw new \Exception('The element is not found');
             }
@@ -624,6 +629,10 @@ class FeatureContext extends WebTestCase implements Context, SnippetAcceptingCon
             $this->signupRegisterForm->fillField('mail', $this->_signupEmail);
             $this->signupRegisterForm->fillField('username', $this->_signupUsername);
             $this->signupRegisterForm->fillField('password', $this->_wrongSignupPassword); //<-------------
+            $rolSelector = $this->signupPage->find('xpath', '//select[@id = "rols"]');
+            $rolSelector -> selectOption($this->_signupRol);
+            $enterpriseSelector = $this->signupPage->find('xpath', '//select[@id = "enterprises"]');
+            $enterpriseSelector -> selectOption($this->_signupEnterprise);
             $this->signupRegisterForm->pressButton('submit');
 
             return $this->signupPage;
@@ -650,6 +659,10 @@ class FeatureContext extends WebTestCase implements Context, SnippetAcceptingCon
             $this->signupRegisterForm->fillField('mail', $this->_signupEmail);
 //            $signupRegisterForm->fillField('username', 'gabriel'); //<-------------
 //            $signupRegisterForm->fillField('password', 'gabriel'); //<-------------
+            $rolSelector = $this->signupPage->find('xpath', '//select[@id = "rols"]');
+            $rolSelector -> selectOption($this->_signupRol);
+            $enterpriseSelector = $this->signupPage->find('xpath', '//select[@id = "enterprises"]');
+            $enterpriseSelector -> selectOption($this->_signupEnterprise);
             $this->signupRegisterForm->pressButton('submit');
 
             return $this->signupPage;
@@ -658,6 +671,58 @@ class FeatureContext extends WebTestCase implements Context, SnippetAcceptingCon
             throw new \Exception('The argument passed is not one of the considered ones; It is: ' . $arg1);
         }
 //        throw new PendingException();
+    }
+
+    /**
+     * @When I try to :arg1 to the system with the e-mail :arg2, the username :arg3, the password :arg4, the rol :arg5 and the enterprise :arg6
+     */
+    public function iTryToToTheSystemWithTheEMailTheUsernameThePasswordTheRolAndTheEnterprise($arg1, $arg2, $arg3, $arg4, $arg5, $arg6)
+    {
+        if ($arg1 == 'sign') {
+            if (null === $this->signupRegisterForm) {
+                throw new \Exception('The element is not found');
+            }
+
+            // find some field INSIDE form with class="password"
+            /*$this->signupRegisterForm->fillField('mail', $this->_signupEmail);
+            $this->signupRegisterForm->fillField('username', $this->_signupUsername);
+            $this->signupRegisterForm->fillField('password', $this->_signupPassword);
+            $rolSelector = $this->signupPage->find('xpath', '//select[@id = "rols"]');
+            $rolSelector -> selectOption($this->_signupRol);
+            $enterpriseSelector = $this->signupPage->find('xpath', '//select[@id = "enterprises"]');
+            $enterpriseSelector -> selectOption($this->_signupEnterprise);
+            $this->signupRegisterForm->pressButton('submit');*/
+
+            $this->signupRegisterForm->fillField('mail', $arg2);
+            $this->signupRegisterForm->fillField('username', $arg3);
+            $this->signupRegisterForm->fillField('password', $arg4);
+            $rolSelector = $this->signupPage->find('xpath', '//select[@id = "rols"]');
+            if ($arg5 == "Usuario") {
+                $rolSelector -> selectOption("1");
+            }
+            else if ($arg5 == "Administrador") {
+                $rolSelector -> selectOption("2");
+            }
+            else if ($arg5 == "Superadministrador") {
+                $rolSelector -> selectOption("3");
+            }
+            else {
+                throw new \Exception('Rols available: (Usuario, Administrador, Superadministrador)');
+            }
+            $enterpriseSelector = $this->signupPage->find('xpath', '//select[@id = "enterprises"]');
+            if ($arg6 = "Empresa 1") {
+                $enterpriseSelector -> selectOption("1");
+            }
+            else {
+                throw new \Exception('Enterprises available: (Empresa 1)');
+            }
+            $this->signupRegisterForm->pressButton('submit');
+
+            return $this->signupPage;
+        }
+        else {
+            throw new \Exception('The argument passed is not one of the considered ones; It is: ' . $arg1);
+        }
     }
 
     /**
@@ -801,10 +866,12 @@ class FeatureContext extends WebTestCase implements Context, SnippetAcceptingCon
      */
     public function iShouldSeeTheWelcomeTitle($arg1)
     {
-        if (null == $this->menuPage) {
+        $page = $this->menuPage; // menu
+        if ($this->_userCase == "c") $page = $this->signupPage; // signup
+        if (null == $page) {
             throw new \Exception('The element $menuRegisterForm is not found');
         }
-        $welcomeTitle = $this->menuPage->findById('welcomeTitle');
+        $welcomeTitle = $page->findById('welcomeTitle');
 
         if (null === $welcomeTitle) {
             throw new \Exception('The title ->' . $arg1 . '<- is not found');
@@ -814,8 +881,14 @@ class FeatureContext extends WebTestCase implements Context, SnippetAcceptingCon
         }
         else {
             if ($this->_driver == 4 || $this->_driver == 3) { // Chrome or Firefox
-                $path = "/Applications/XAMPP/htdocs/dummy/web/tests_output/menuTestAction/screenshots/iShouldSeeTheWelcomeTitle--" . $arg1 . "--" . $this->date . ".png";
-                return $this->takeScreenshot($path, $this->menuDriver);
+                if ($this->_userCase == "c") {  // signup
+                    $path = "/Applications/XAMPP/htdocs/dummy/web/tests_output/signupTestAction/screenshots/iShouldSeeTheWelcomeTitle--" . $arg1 . "--" . $this->date . ".png";
+                    return $this->takeScreenshot($path, $this->signupDriver);
+                }
+                else { // menu
+                    $path = "/Applications/XAMPP/htdocs/dummy/web/tests_output/menuTestAction/screenshots/iShouldSeeTheWelcomeTitle--" . $arg1 . "--" . $this->date . ".png";
+                    return $this->takeScreenshot($path, $this->menuDriver);
+                }
             }
             return true;
         }
