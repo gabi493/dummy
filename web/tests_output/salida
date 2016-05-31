@@ -1,0 +1,55 @@
+[1mFeature:[22m Login checking
+  In order to login to the application
+  As a user
+  I need to be able to put my username and password
+  
+  Rules:
+  - Username in UTF8-bin
+  - Username not existing in the DDBB returns error "Username not registered in the system"
+  - Password in UTF8-bin
+  - Password shorter than 5 characters returns an error
+  - Password not containing at least one number (0-9) returns error "Password has to contain at least one number (0-9)"
+  - Password not containing at least one symbol ($, %, &,...) returns error "Password has to contain at least one symbol ($, %, &,...)"
+  - Password not belonging to the introduced username returns error "Username and password do not match"
+
+  [1mScenario:[22m Login to the application with a username not existing in the DDBB  [30m# features/login.feature:15[39m
+    [32mGiven I am not registered[39m                                                  [30m# FeatureContext::iAmNotRegistered()[39m
+    [32mWhen I try to "[39m[32;1mlogin[39;22m[32m" to the system[39m                                        [30m# FeatureContext::iTryToToTheSystem()[39m
+    [32mThen I should see the login error message "[39m[32;1mIncorrect username or password[39;22m[32m"[39m [30m# FeatureContext::iShouldSeeTheLoginErrorMessage()[39m
+
+[1mFeature:[22m Sign up
+  In order to sign up
+  As a new user
+  I need to be able to provide the necessary information to the system
+  
+  Rules:
+  - Mail contains an @
+  - Username with > 6 characters
+  - Password with > 6 characters
+  - Mail not containing an @ returns error "Insert a valid e-mail: must contain an @"
+  - Username with <= 5 characters returns error "Insert a valid username: must contain at least 6 characters"
+  - Password with <= 5 characters returns error "Insert a valid password: must contain at least 6 characters"
+
+  [1mScenario:[22m Sign up to the system with an invalid e-mail                  [30m# features/signup.feature:14[39m
+    [32mGiven I am not registered[39m                                             [30m# FeatureContext::iAmNotRegistered()[39m
+    [32mWhen I try to "[39m[32;1msign[39;22m[32m" to the system with an e-mail not containing an @[39m [30m# FeatureContext::iTryToToTheSystemWithAnEMailNotContainingAn()[39m
+    [32mThen I should see the signup error message "[39m[32;1mInvalid e-mail format[39;22m[32m"[39m    [30m# FeatureContext::iShouldSeeTheSignupErrorMessage()[39m
+
+  [1mScenario:[22m Sign up to the system with an invalid username                                   [30m# features/signup.feature:19[39m
+    [32mGiven I am not registered[39m                                                                [30m# FeatureContext::iAmNotRegistered()[39m
+    [32mWhen I try to "[39m[32;1msign[39;22m[32m" to the system with a username shorter than [39m[32;1m6[39;22m[32m characters[39m             [30m# FeatureContext::iTryToToTheSystemWithAUsernameShorterThanCharacters()[39m
+    [32mThen I should see the signup error message "[39m[32;1mUsername must be at least 6 characters long[39;22m[32m"[39m [30m# FeatureContext::iShouldSeeTheSignupErrorMessage()[39m
+
+  [1mScenario:[22m Sign up to the system with an invalid password                                   [30m# features/signup.feature:24[39m
+    [32mGiven I am not registered[39m                                                                [30m# FeatureContext::iAmNotRegistered()[39m
+    [32mWhen I try to "[39m[32;1msign[39;22m[32m" to the system with a password shorter than [39m[32;1m6[39;22m[32m characters[39m             [30m# FeatureContext::iTryToToTheSystemWithAPasswordShorterThanCharacters()[39m
+    [32mThen I should see the signup error message "[39m[32;1mPassword must be at least 6 characters long[39;22m[32m"[39m [30m# FeatureContext::iShouldSeeTheSignupErrorMessage()[39m
+
+  [1mScenario:[22m Sign up to the system without some of the required data            [30m# features/signup.feature:29[39m
+    [32mGiven I am not registered[39m                                                  [30m# FeatureContext::iAmNotRegistered()[39m
+    [32mWhen I try to "[39m[32;1msign[39;22m[32m" to the system without an e-mail, username or password[39m [30m# FeatureContext::iTryToToTheSystemWithoutAnEMailUsernameOrPassword()[39m
+    [32mThen I should see the signup error message "[39m[32;1mFill in all the fields[39;22m[32m"[39m        [30m# FeatureContext::iShouldSeeTheSignupErrorMessage()[39m
+
+5 escenarios ([32m5 pasaron[39m)
+15 pasos ([32m15 pasaron[39m)
+0m3.14s (15.71Mb)

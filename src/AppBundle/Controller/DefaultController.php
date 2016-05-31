@@ -2,20 +2,41 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
-{
-/*    /**
-     * @Route("/", name="homepage")
+{  
+    /**
+     * / :: indexAction
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        // comprobamos si estamos logados con el servicio de sesión
+        if (!$this->container->get('model.session')->isLogged()) {
+            // nos vamos a la zona de login
+            return $this->forward('AppBundle:Login:index');            
+        }
+        // entramos en la aplicación
+        return $this->forward('AppBundle:Main:index');
     }
 }
+
+/*
+ * $.ajax({
+               type: "POST",
+               url: '/lanzarinformebehat',
+               success: function(html) {
+                    //document.location.href = '/leerelfichero';
+                    $.ajax({
+                        type: "POST",
+                        url: '/leerelfichero',
+                        success: function(_html) {
+                             // mostrarl el contenido del fichero que viene en _html
+                        }
+                  });
+               }
+         });
+ *
+ *
+ * */

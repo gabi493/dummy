@@ -4,25 +4,14 @@ AppBundle\Entity\Rol:
     id:
         id:
             type: bigint
-            nullable: false
-            unsigned: true
-            id: true
+            nullable: false                        
+            options:
+                unsigned: true
             generator:
                 strategy: IDENTITY
     fields:
-        webAdmin:
-            type: integer
-            nullable: false
-            unsigned: false
-            column: web-admin
-        ceo:
-            type: integer
-            nullable: false
-            unsigned: false
-            column: CEO
-        communityManager:
-            type: integer
-            nullable: false
-            unsigned: false
-            column: community_manager
+        tipo:
+            type: string
+            length: 255
+            nullable: false        
     lifecycleCallbacks: {  }

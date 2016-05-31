@@ -1,0 +1,36 @@
+Feature: Sign up
+  In order to sign up
+  As a new user
+  I need to be able to provide the necessary information to the system
+  
+  Rules:
+  - Mail contains an @
+  - Username with > 6 characters
+  - Password with > 6 characters
+  - Mail not containing an @ returns error "Insert a valid e-mail: must contain an @"
+  - Username with <= 5 characters returns error "Insert a valid username: must contain at least 6 characters"
+  - Password with <= 5 characters returns error "Insert a valid password: must contain at least 6 characters"
+
+  Scenario: Sign up to the system with an invalid e-mail                  # features/signup.feature:14
+    Given I am not registered                                             # FeatureContext::iAmNotRegistered()
+    When I try to "sign" to the system with an e-mail not containing an @ # FeatureContext::iTryToToTheSystemWithAnEMailNotContainingAn()
+    Then I should see the signup error message "Invalid e-mail format"    # FeatureContext::iShouldSeeTheSignupErrorMessage()
+
+  Scenario: Sign up to the system with an invalid username                                   # features/signup.feature:19
+    Given I am not registered                                                                # FeatureContext::iAmNotRegistered()
+    When I try to "sign" to the system with a username shorter than 6 characters             # FeatureContext::iTryToToTheSystemWithAUsernameShorterThanCharacters()
+    Then I should see the signup error message "Username must be at least 6 characters long" # FeatureContext::iShouldSeeTheSignupErrorMessage()
+
+  Scenario: Sign up to the system with an invalid password                                   # features/signup.feature:24
+    Given I am not registered                                                                # FeatureContext::iAmNotRegistered()
+    When I try to "sign" to the system with a password shorter than 6 characters             # FeatureContext::iTryToToTheSystemWithAPasswordShorterThanCharacters()
+    Then I should see the signup error message "Password must be at least 6 characters long" # FeatureContext::iShouldSeeTheSignupErrorMessage()
+
+  Scenario: Sign up to the system without some of the required data            # features/signup.feature:29
+    Given I am not registered                                                  # FeatureContext::iAmNotRegistered()
+    When I try to "sign" to the system without an e-mail, username or password # FeatureContext::iTryToToTheSystemWithoutAnEMailUsernameOrPassword()
+    Then I should see the signup error message "Fill in all the fields"        # FeatureContext::iShouldSeeTheSignupErrorMessage()
+
+4 escenarios (4 pasaron)
+12 pasos (12 pasaron)
+0m12.74s (12.86Mb)

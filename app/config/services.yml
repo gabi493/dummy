@@ -3,7 +3,24 @@
 parameters:
 #    parameter_name: value
 
-services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+services:    
+    model.user:
+        class: AppBundle\Model\UserModel
+        arguments: [@doctrine.orm.entity_manager, @service_container]
+      
+    model.post:
+        class: AppBundle\Model\PostModel
+        arguments: [@doctrine.orm.entity_manager, @service_container]
+        
+    model.session:
+        class: AppBundle\Model\SessionModel
+        arguments: [@doctrine.orm.entity_manager, @service_container]
+
+    model.enterprise:
+        class: AppBundle\Model\EnterpriseModel
+        arguments: [@doctrine.orm.entity_manager, @service_container]
+
+    model.rol:
+        class: AppBundle\Model\RolModel
+        arguments: [@doctrine.orm.entity_manager, @service_container]
+

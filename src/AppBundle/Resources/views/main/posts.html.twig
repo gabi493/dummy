@@ -1,0 +1,69 @@
+
+    <table cellspacing="2" cellpading="2" border="0" width="100%">
+        {% for post in posts %}
+            <tr>
+                <td>
+                    <table cellspacing="2" cellpadding="2" border="0" width="100%">
+                        <tr>
+                            <td>
+                                <strong id="postTitle">{{ post.title }}</strong><br/><em>{{ post.date }} @ {{ post.autor }}</em>
+                                <input type="hidden" id="postid" value="{{ post.id }}" />
+                            </td>                            
+                        </tr>
+                        <tr>
+                            <td id="postBody">{{ post.description }}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <hr/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form>
+                                    <table cellspacing="2" cellpadding="2" border="0" width="100%">
+                                        <tr>
+                                            <td>
+                                                Nuevo comentario
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" id="newCommentTitle" name="newCommentTitle" style="width: 100%;" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <textarea id="newCommentBody" name="newCommentBody" style="width: 100%; height: 50px;"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {#<input type="button" id="newCommentButton" name="newCommentButton" value="Comentar" />#}
+                                                <button id="newCommentButton" name="newCommentButton">Comentar</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </td>
+                        </tr> 
+                        <tr>
+                            <td>
+                                <hr/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <message id="errores"></message>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="listadoComments">
+                                {% include "AppBundle:main:comments.html.twig" %}                                                                
+                            </td>
+                        </tr>                                
+                    </table>
+                </td>
+            </tr>
+        {% endfor %}      
+    </table>

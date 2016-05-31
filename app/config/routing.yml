@@ -1,32 +1,61 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+
+# root
 
 root:
-    path:      /
-    # uses a special syntax to point to the controller
-    #defaults:  { _controller: AppBundle:Login:name }
-    defaults:  { _controller: AppBundle:Login:index }
+    path:       /    
+    defaults:   { _controller: AppBundle:Default:index }
+    
+# login
 
 login:
-    path:      /login
-    defaults:  { _controller: AppBundle:Login:login }
+    path:       /login
+    defaults:   { _controller: AppBundle:Login:index }
 
-login_test:
-    path:      /login/test
-    defaults:  { _controller: AppBundle:Login:test }
+loginDo:
+    path:       /login.do
+    defaults:   { _controller: AppBundle:Login:loginDo }
 
+loginError:
+    path:       /login.error/{errorcode}
+    defaults:   { _controller: AppBundle:Login:loginError }
 
+# signup
 
-login_error:
-    path:      /login/error
-    defaults:  { _controller: AppBundle:Login:error }
+signup:
+    path:       /signup
+    defaults:   { _controller: AppBundle:Signup:index }
 
-newlogin:
-    path:      /login/new
-    defaults:  { _controller: AppBundle:Login:newlogin }
+signupDo:
+    path:       /signup.do
+    defaults:   { _controller: AppBundle:Signup:signupDo }
 
-submit_successful:
-    path:      /submitted
-    defaults:  { _controller: AppBundle:Login:submitted }
+signupError:
+    path:       /signup.error/{errorcode}
+    defaults:   { _controller: AppBundle:Signup:signupError }
 
+# main
+
+main:
+    path:       /main
+    defaults:   { _controller: AppBundle:Main:index }
+    
+    
+newcomment:
+    path:       /newcomment
+    defaults:   { _controller: AppBundle:Main:newComment }
+    
+deletecomment:
+    path:       /deletecomment
+    defaults:   { _controller: AppBundle:Main:deleteComment }    
+    
+# aboutus
+
+aboutus:
+    path:       /aboutus
+    defaults:   { _controller: AppBundle:Main:aboutus }
+
+# logout
+
+logout:
+    path:       /logout
+    defaults:   { _controller: AppBundle:Login:logout }

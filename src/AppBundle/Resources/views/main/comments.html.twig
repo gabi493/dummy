@@ -1,0 +1,23 @@
+<table cellspacing="2" cellpadding="2" border="0" width="95%" align="right">
+{% for comment in post.comments %}
+    <tr>
+        <td>
+            <strong id="commentTitle">{{ comment.title }}</strong><br/><em>{{ comment.date }} @ {{ comment.autor }}</em>
+        </td>
+        {% if usuario.id == comment.autorID %}
+            <td valign="middle" width="1" nowrap>
+                {#<input type="button" id="deleteCommentButton-{{ comment.id }}" onclick="deleteComment({{ comment.id }});" value="Borrar" style="width: 100px;" />#}
+                <button id="deleteCommentButton-{{ comment.id }}" name="deleteCommentButton-{{ comment.id }}" onclick="deleteComment({{ comment.id }});" style="width: 100px;">Borrar</button>
+            </td>
+        {% endif %}
+    </tr>
+    <tr>
+        <td colspan="2" id="commentBody">{{ comment.description }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <hr/>
+        </td>
+    </tr>                                    
+{% endfor %}
+</table>

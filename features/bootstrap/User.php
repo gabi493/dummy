@@ -1,5 +1,5 @@
 <?php
-// features/bootstrap/Shelf.php
+// features/bootstrap/User.php
 
 final class User
 {

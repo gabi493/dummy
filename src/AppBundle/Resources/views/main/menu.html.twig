@@ -1,0 +1,13 @@
+<table cellspacing="0" cellpadding="3" border="0">
+    <tr>
+        <td class="menuitem {% if selectedSection is not defined %} selected {% endif %}">
+            <a id="Home" href="{{ path('main') }}">Home</a>
+        </td>
+        <td class="menuitem {% if selectedSection is defined %} selected {% endif %}">
+            <a id="Aboutus" href="{{ path('aboutus') }}">About us</a>
+        </td>
+        <td class="menuitem">
+            <a id="Exit" href="{{ path('logout') }}">Exit</a>
+        </td>
+    </tr>
+</table>

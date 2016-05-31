@@ -1,0 +1,89 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="maincontainer" xmlns="http://www.w3.org/1999/html">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tr>
+                <td colspan="2" align="right">
+                    {% include "AppBundle:main:menu.html.twig" %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width="100%" cellspacing="4" cellpadding="8" border="0" align="center">
+                        <tr>
+                            <td width="20%" align="center" valign="top">
+                                {% include "AppBundle:user:profile.html.twig" %}
+
+                            </td>
+                            <td><strong id="welcomeTitle">Welcome {{ usuario.name }}!</strong></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <td>
+                <p>This dummy application is part of the final project of Gabriel Carrillo:</p>
+
+                <strong>Contexto</strong></br>
+
+                <p>El proyecto “Herramienta de pruebas automatizadas y reporting por diferentes canales” forma parte de la especialidad de Sistemas de la Información del plan de estudios del Grado en Ingeniería Informática de la Facultad de Informática de Barcelona (FIB) - Universidad Politécnica de Cataluña (UPC) - BarcelonaTech. Este proyecto se ha llevado a cabo en el departamento de “Digital Channels (Unidad de Tecnología)” de la empresa “everis an NTT DATA Company”, una consultora multinacional que ofrece soluciones de negocio, estrategia, desarrollo y mantenimiento de aplicaciones tecnológicas y outsourcing.</p>
+
+                <p>En este departamento se desarrollan y mantienen portales de diversa índole (conocimiento, intranets, contenidos, capa social) sobre Liferay, en PHP, con Sharepoint u Oracle WebCenter Sites para grandes sistemas corporativos. La capa social de un sistema corporativo permite añadir una serie de funcionalidades sociales a la tecnología ya existente en la entidad, como por ejemplo:</p>
+                <ul>
+                    <li>Microblogging: entornos de colaboración social.</li>
+                    <li>Noticias.</li>
+                    <li>Integración entre sistemas (novedades sobre los usuarios) mediante un sistema de seguimiento.</li>
+                    <li>Mejora de la usabilidad en la gestión de grupos de trabajo.</li>
+                    <li>Administración sencilla de usuarios y contactos.</li>
+                    <li>Acceso vía móvil a la plataforma.</li>
+                </ul>
+
+                <p>Estos portales están desplegados en 3 entornos distintos:</p>
+                <ul>
+                    <li>producción (PRO).</li>
+                    <li>pre-producción (PRE).</li>
+                    <li>integración (opcional).</li>
+                    <li>local.</li>
+                </ul>
+
+                <p>El entorno de producción es un servidor web al que acceden las peticiones de los usuarios (el servicio que se ofrece). El entorno de pre-producción suele ser una copia del de producción, pero al que solo tienen acceso los clientes para hacer las pruebas del código encargado. El entorno de integración es el servidor en el que los desarrolladores suben los nuevos desarrollos junto al resto del proyecto (ver que todo funciona). El entorno local es la máquina personal de cada desarrollador, es decir, su ordenador. Es donde cada uno lleva a cabo su trabajo: desarrollar, programar, “picar código”.</p>
+
+                <p>Cuando un programador ha desarrollado algo, lo sube a integración para corroborar que todo funciona como es debido. Aquí, todos los integrantes del equipo tendrán acceso al código subido. En el caso de que no exista el entorno de integración, los desarrolladores hacen todo lo descrito directamente en PRE. Cada cierto tiempo (acordado con el cliente), se suben todos los cambios hechos en integración a PRE. De este modo el cliente ve y corrobora los cambios llevados a cabo.</br>
+                Cuando el cliente ha revisado los cambios de PRE (suele ser un espacio corto de tiempo - horas/días), da el visto bueno y se suben los cambios hechos en PRE a PRO.
+                </p>
+
+                <p>Actualmente, uno de los procedimientos que se siguen en el departamento de digital channels para realizar planes de pruebas, es mediante ficheros de excel que se van rellenando a mano. Una vez desarrollada la nueva funcionalidad, se crea una plantilla con las pruebas a validar. Esto significa que se diseñan los juegos de datos de entrada, se define lo que se espera y se valida la funcionalidad desarrollada. Para garantizar que el conjunto del sistema funciona bien, antes de enviar los cambios al cliente (subir a PRO) se realizan las pruebas donde, para un input concreto, el sistema debe devolver el resultado esperado.</p>
+
+                <p>Una vez subido a PRO, se vuelve a llevar a cabo el mismo proceso con el mismo plan de pruebas de los desarrolladores (PRE) para comprobar que todo sigue funcionando en este entorno.</p>
+
+
+                <strong>Gestión actual del problema</strong>
+
+                <p>El principal problema actual de algunos proyectos del departamento, es que las pruebas se llevan a cabo manualmente (mediante plantillas de ficheros de Excel ). Esto implica la existencia de errores humanos y sus correspondientes correcciones que alejan el estado del proceso de pruebas del óptimo. Además, el hacerlas a mano implica tener que hacer un trabajo repetitivo cuando se quieren llevar a cabo las mismas pruebas en entornos y navegadores distintos.</p>
+
+                <p>Por lo tanto, el proyecto se basa en crear una herramienta de testing de portales web para obtener resultados y generar informes automáticamente.</br>
+                De este modo, se minimizarán los posibles errores humanos y se reducirá el tiempo empleado en pruebas repetitivas permitiendo que las pruebas pasen a ser multientorno, multiidioma y de mayor calidad. En definitiva, se optimiza el proceso de pruebas disminuyendo su tiempo de ejecución y aumentando su fiabilidad.</p>
+
+                <p>Hay que matizar que no siempre conviene automatizar las pruebas funcionales. La automatización es una inversión, y como tal, hay que estudiar si sale a cuenta o no. Esto se hace mediante un análisis del producto, del proyecto de desarrollo y de la empresa.</br>
+                El portal por el que navegará la herramienta será un portal dummy que tenga las opciones básicas de la capa social: login, menús de navegación, buscador con resultados, eventos de click tipo “like”, formularios con adjuntos.</p>
+
+                <p>Esta herramienta de testing navegará por el portal dummy según la configuración especificada en un fichero (properties). Este fichero contendrá los distintos tipos de Pruebas Funcionales que se podrán llevar a cabo sobre el portal, de modo que el tester solamente tenga que escoger los que aplican o no en la prueba a llevar a cabo. Las herramientas de testing pueden generar informes en distintos formatos, y el propósito es ofrecer una alternativa nueva a partir de una librería (API) que permita integrar uno de estos formatos con el software TestLink.</p>
+
+
+                <strong>Análisis de productos similares en el mercado</strong>
+
+                <p>La comprobación del software puede llevarse a cabo de forma manual o automática. Todo depende del producto, del proyecto y de la empresa.</p>
+
+                <p>En función del producto (tecnología usada), hay que estudiar las herramientas de automatización existentes. Estas ayudan a ver (con sus interfaces) el nivel de dificultad para automatizar las pruebas. En casos como el estudiado en los que el producto requiere trabajar en múltiples plataformas (distintos navegadores y entornos), se puede ahorrar tiempo de desarrollo reutilizando las pruebas automatizadas: realizando las mismas pruebas escogidas a través de los parámetros de configuración del fichero de propiedades.</p>
+
+                <p>En función del proyecto, el número de iteraciones del desarrollo y su frecuencia pueden variar. Como remarca S. Mendoza [Men11], las iteraciones no son exclusivas de la fase de desarrollo, puesto que una vez liberado el software, puede haber peticiones correctivas y evolutivas. También hay casos en los que el ritmo y la calidad del proyecto vienen determinados por las exigencias del mercado. Esto sirve de guía sobre cuánto se usarán las pruebas automatizadas.</p>
+
+                <p>En función de la empresa, la automatización puede llevarse a cabo desde el principio del proyecto o una vez finalizado. Generalmente, las empresas pequeñas y nuevas no pueden afrontar una automatización de los procesos de pruebas por temas económicos y temporales. Aunque hay empresas que, teniendo la capacidad, van posponiendo la automatización hasta llegar a sacar versiones prácticamente sin testear [Far11]. Los principales motivos suelen ser el tamaño del producto, la alta frecuencia de salida de nuevas versiones y la pluralidad de versiones para distintos clientes o plataformas, entre otros. Para que el proyecto de automatización tenga éxito, se precisa el apoyo de la capa de gerencia y del equipo de desarrollo. De aquí la importancia de hacerles entender sus beneficios.</p>
+
+                <p>Por lo tanto, para decidir el momento exacto en el que automatizar un proceso de testing, se deben tener en cuenta las variables anteriores. Esto es así puesto que muy pronto puede implicar hallarse con una inmadurez a nivel de equipo, y demasiado tarde puede conllevar que algunos cambios del desarrollo se detecten muy tarde y haya una regresión al final. Es evidente que estos pueden afectar al éxito del producto.</p>
+
+                <p>Por ello hay que estudiar desde el comienzo del proyecto si se está en el momento correcto para llevar a cabo la automatización de sus procesos de pruebas.</p>
+            </td>
+        </table>
+    </div>
+{% endblock %}

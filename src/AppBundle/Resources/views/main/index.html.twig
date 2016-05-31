@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+    
+{% block body %}
+    <div class="maincontainer">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tr>
+                <td colspan="2" align="right">
+                  {% include "AppBundle:main:menu.html.twig" %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width="100%" cellspacing="4" cellpadding="8" border="0" align="center">
+                        <tr>
+                            <td width="20%" align="center" valign="top">
+                                {% include "AppBundle:user:profile.html.twig" %}
+                            </td>
+                            <td width="80%" align="center" valign="top">
+                                {% include "AppBundle:main:posts.html.twig" %}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+[1mFeature:[22m Comment
+  In order to comment a post
+  As a logged user
+  I need to be able to introduce a post title and body and click the "Comentar" button
+  
+  Rules:
+  - I'm a logged user
+
+  [1mScenario:[22m Comment with a title                                            [30m# features/comment.feature:9[39m
+    [32mGiven I am logged as username "[39m[32;1mgabriel[39;22m[32m" with password "[39m[32;1mgabriel[39;22m[32m"[39m         [30m# FeatureContext::iAmLoggedAsUsernameWithPassword()[39m
+    [32mWhen I try to surf to the "[39m[32;1mHome[39;22m[32m" tab[39m                                    [30m# FeatureContext::iTryToSurfToTheTab()[39m
+    [32mAnd I try to comment the post with the title "[39m[32;1mComment with a title[39;22m[32m"[39m     [30m# FeatureContext::iTryToCommentThePostWithTheTitle()[39m
+    [32mThen I should see the comment error message "[39m[32;1mThe comment precises body[39;22m[32m"[39m [30m# FeatureContext::iShouldSeeTheCommentErrorMessage()[39m
+
+  [1mScenario:[22m Comment with a body                                              [30m# features/comment.feature:15[39m
+    [32mGiven I am logged as username "[39m[32;1mjose[39;22m[32m" with password "[39m[32;1mjose[39;22m[32m"[39m                [30m# FeatureContext::iAmLoggedAsUsernameWithPassword()[39m
+    [32mWhen I try to surf to the "[39m[32;1mHome[39;22m[32m" tab[39m                                     [30m# FeatureContext::iTryToSurfToTheTab()[39m
+    [32mAnd I try to comment the post with the body "[39m[32;1mComment with a body[39;22m[32m"[39m        [30m# FeatureContext::iTryToCommentThePostWithTheBody()[39m
+    [32mThen I should see the comment error message "[39m[32;1mThe comment precises title[39;22m[32m"[39m [30m# FeatureContext::iShouldSeeTheCommentErrorMessage()[39m
+
+  [1mScenario:[22m Comment with a title and a body                                                                                                   [30m# features/comment.feature:21[39m
+    [32mGiven I am logged as username "[39m[32;1m123456[39;22m[32m" with password "[39m[32;1m123456[39;22m[32m"[39m                                                                             [30m# FeatureContext::iAmLoggedAsUsernameWithPassword()[39m
+    [32mWhen I try to surf to the "[39m[32;1mHome[39;22m[32m" tab[39m                                                                                                      [30m# FeatureContext::iTryToSurfToTheTab()[39m
+    [32mAnd I try to comment the post with the title "[39m[32;1mComment with a title and a body[39;22m[32m" and the body "[39m[32;1mBody of the comment with a title and a body[39;22m[32m"[39m [30m# FeatureContext::iTryToCommentThePostWithTheTitleAndTheBody()[39m
+    [32mThen I should see the comment with the title "[39m[32;1mComment with a title and a body[39;22m[32m"[39m                                                            [30m# FeatureContext::iShouldSeeTheCommentWithTheTitle()[39m
+
+  [1mScenario:[22m Delete a post                                                                                                       [30m# features/comment.feature:27[39m
+    [32mGiven I am logged as username "[39m[32;1m123456[39;22m[32m" with password "[39m[32;1m123456[39;22m[32m"[39m                                                               [30m# FeatureContext::iAmLoggedAsUsernameWithPassword()[39m
+    [32mWhen I try to surf to the "[39m[32;1mHome[39;22m[32m" tab[39m                                                                                        [30m# FeatureContext::iTryToSurfToTheTab()[39m
+    [32mAnd I commented with the title "[39m[32;1mComment with a title and a body[39;22m[32m" and the body "[39m[32;1mBody of the comment with a title and a body[39;22m[32m"[39m [30m# FeatureContext::iCommentedWithTheTitleAndTheBody()[39m
+    [32mAnd I try to delete the post with title "[39m[32;1mComment with a title and a body[39;22m[32m"[39m                                                   [30m# FeatureContext::iTryToDeleteThePostWithTitle()[39m
+    [32mThen I should not see the post with title "[39m[32;1mComment with a title and a body[39;22m[32m"[39m                                                 [30m# FeatureContext::iShouldNotSeeThePostWithTitle()[39m
+
+4 escenarios ([32m4 pasaron[39m)
+17 pasos ([32m17 pasaron[39m)
+0m16.62s (12.97Mb)

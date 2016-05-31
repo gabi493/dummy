@@ -25,19 +25,9 @@ class Document
     private $name;
 
     /**
-     * @var string
+     * @var \AppBundle\Entity\Post
      */
-    private $autor;
-
-    /**
-     * @var integer
-     */
-    private $commentId;
-
-    /**
-     * @var integer
-     */
-    private $postId;
+    private $fk_postId;
 
 
     /**
@@ -97,99 +87,25 @@ class Document
     }
 
     /**
-     * Set autor
+     * Set fk_postId
      *
-     * @param string $autor
+     * @param \AppBundle\Entity\Post $fkPostId
      * @return Document
      */
-    public function setAutor($autor)
+    public function setFkPostId(\AppBundle\Entity\Post $fkPostId)
     {
-        $this->autor = $autor;
+        $this->fk_postId = $fkPostId;
 
         return $this;
     }
 
     /**
-     * Get autor
+     * Get fk_postId
      *
-     * @return string 
+     * @return \AppBundle\Entity\Post 
      */
-    public function getAutor()
+    public function getFkPostId()
     {
-        return $this->autor;
-    }
-
-    /**
-     * Set commentId
-     *
-     * @param integer $commentId
-     * @return Document
-     */
-    public function setCommentId($commentId)
-    {
-        $this->commentId = $commentId;
-
-        return $this;
-    }
-
-    /**
-     * Get commentId
-     *
-     * @return integer 
-     */
-    public function getCommentId()
-    {
-        return $this->commentId;
-    }
-
-    /**
-     * Set postId
-     *
-     * @param integer $postId
-     * @return Document
-     */
-    public function setPostId($postId)
-    {
-        $this->postId = $postId;
-
-        return $this;
-    }
-
-    /**
-     * Get postId
-     *
-     * @return integer 
-     */
-    public function getPostId()
-    {
-        return $this->postId;
-    }
-    /**
-     * @var string
-     */
-    private $manyToOne;
-
-
-    /**
-     * Set manyToOne
-     *
-     * @param string $manyToOne
-     * @return Document
-     */
-    public function setManyToOne($manyToOne)
-    {
-        $this->manyToOne = $manyToOne;
-
-        return $this;
-    }
-
-    /**
-     * Get manyToOne
-     *
-     * @return string 
-     */
-    public function getManyToOne()
-    {
-        return $this->manyToOne;
+        return $this->fk_postId;
     }
 }

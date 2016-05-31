@@ -1,0 +1,36 @@
+Feature: Comment
+  In order to comment a post
+  As a logged user
+  I need to be able to introduce a post title and body and click the "Comentar" button
+  
+  Rules:
+  - I'm a logged user
+
+  Scenario: Comment with a title                                            # features/comment.feature:9
+    Given I am logged as username "gabriel" with password "gabriel"         # FeatureContext::iAmLoggedAsUsernameWithPassword()
+    When I try to surf to the "Home" tab                                    # FeatureContext::iTryToSurfToTheTab()
+    And I try to comment the post with the title "Comment with a title"     # FeatureContext::iTryToCommentThePostWithTheTitle()
+    Then I should see the comment error message "The comment precises body" # FeatureContext::iShouldSeeTheCommentErrorMessage()
+
+  Scenario: Comment with a body                                              # features/comment.feature:15
+    Given I am logged as username "jose" with password "jose"                # FeatureContext::iAmLoggedAsUsernameWithPassword()
+    When I try to surf to the "Home" tab                                     # FeatureContext::iTryToSurfToTheTab()
+    And I try to comment the post with the body "Comment with a body"        # FeatureContext::iTryToCommentThePostWithTheBody()
+    Then I should see the comment error message "The comment precises title" # FeatureContext::iShouldSeeTheCommentErrorMessage()
+
+  Scenario: Comment with a title and a body                                                                                                   # features/comment.feature:21
+    Given I am logged as username "123456" with password "123456"                                                                             # FeatureContext::iAmLoggedAsUsernameWithPassword()
+    When I try to surf to the "Home" tab                                                                                                      # FeatureContext::iTryToSurfToTheTab()
+    And I try to comment the post with the title "Comment with a title and a body" and the body "Body of the comment with a title and a body" # FeatureContext::iTryToCommentThePostWithTheTitleAndTheBody()
+    Then I should see the comment with the title "Comment with a title and a body"                                                            # FeatureContext::iShouldSeeTheCommentWithTheTitle()
+
+  Scenario: Delete a post                                                                                                       # features/comment.feature:27
+    Given I am logged as username "123456" with password "123456"                                                               # FeatureContext::iAmLoggedAsUsernameWithPassword()
+    When I try to surf to the "Home" tab                                                                                        # FeatureContext::iTryToSurfToTheTab()
+    And I commented with the title "Comment with a title and a body" and the body "Body of the comment with a title and a body" # FeatureContext::iCommentedWithTheTitleAndTheBody()
+    And I try to delete the post with title "Comment with a title and a body"                                                   # FeatureContext::iTryToDeleteThePostWithTitle()
+    Then I should not see the post with title "Comment with a title and a body"                                                 # FeatureContext::iShouldNotSeeThePostWithTitle()
+
+4 escenarios (4 pasaron)
+17 pasos (17 pasaron)
+0m17.68s (12.96Mb)

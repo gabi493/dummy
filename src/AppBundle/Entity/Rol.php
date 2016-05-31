@@ -15,19 +15,9 @@ class Rol
     private $id;
 
     /**
-     * @var integer
+     * @var string
      */
-    private $webAdmin;
-
-    /**
-     * @var integer
-     */
-    private $ceo;
-
-    /**
-     * @var integer
-     */
-    private $communityManager;
+    private $tipo;
 
 
     /**
@@ -41,71 +31,25 @@ class Rol
     }
 
     /**
-     * Set webAdmin
+     * Set tipo
      *
-     * @param integer $webAdmin
+     * @param string $tipo
      * @return Rol
      */
-    public function setWebAdmin($webAdmin)
+    public function setTipo($tipo)
     {
-        $this->webAdmin = $webAdmin;
+        $this->tipo = $tipo;
 
         return $this;
     }
 
     /**
-     * Get webAdmin
+     * Get tipo
      *
-     * @return integer 
+     * @return string 
      */
-    public function getWebAdmin()
+    public function getTipo()
     {
-        return $this->webAdmin;
-    }
-
-    /**
-     * Set ceo
-     *
-     * @param integer $ceo
-     * @return Rol
-     */
-    public function setCeo($ceo)
-    {
-        $this->ceo = $ceo;
-
-        return $this;
-    }
-
-    /**
-     * Get ceo
-     *
-     * @return integer 
-     */
-    public function getCeo()
-    {
-        return $this->ceo;
-    }
-
-    /**
-     * Set communityManager
-     *
-     * @param integer $communityManager
-     * @return Rol
-     */
-    public function setCommunityManager($communityManager)
-    {
-        $this->communityManager = $communityManager;
-
-        return $this;
-    }
-
-    /**
-     * Get communityManager
-     *
-     * @return integer 
-     */
-    public function getCommunityManager()
-    {
-        return $this->communityManager;
+        return $this->tipo;
     }
 }

@@ -15,5 +15,5 @@ Feature: Login checking
   Scenario: Login to the application with a username not existing in the DDBB
     Given I am not registered
     When I try to "login" to the system
-    Then I should see the error message "Username not registered in the system"
+    Then I should see the login error message "Incorrect username or password"
 

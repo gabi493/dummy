@@ -1,0 +1,20 @@
+# behat.yml
+
+default:
+    suites:
+        default:
+            contexts:
+                - FeatureContext
+    formatters:
+        html:
+            output_path: /Applications/XAMPP/htdocs/dummy/web/tests_output/loginTestAction/output_path.html #output_path: %paths.base%/web/tests_output/loginTestAction/salida.html
+        pretty:
+            output_path: %paths.base%/../../web/tests_output/loginTestAction/output_path.txt
+    extensions:
+        emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+            name: html
+            renderer: Twig,Behat2
+            file_name: salidaDesdeBehatYAML
+            print_args: true
+            print_outp: true
+            loop_break: true

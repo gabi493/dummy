@@ -1,0 +1,42 @@
+    ######################################################################
+    #                                                                    #
+    #                       PARAMETERS CONFIGURATION                     #
+    #    Answers preceded by "[VariableName] = " (without quotations)    #
+    #                                                                    #
+    ######################################################################
+
+###### Insert here the URL of your application (it's location. ex: http://localhost:8000/)
+[URL] = http://localhost:8000/
+
+###### Insert here the Mink Driver you want to use (the number)
+####    1: Goutte
+####    2: BrowserKit
+####    3: Selenium2 (visual->firefox)
+####    4: Selenium2 (visual->chrome)
+[Driver] = 4
+
+###### Insert here the user case you want to execute (the letter)
+####    a: Everything
+####    b: Login
+####    c: Sign up
+####    d: Menu
+####    e: Comment (Obligatorio usar Selenium2 con Chrome --> JS & AJAX used)
+[UserCase] = c
+
+###### Insert here the correct user's mail, username, password, rol and enterprise you want to signup with
+####    Rols available:
+##        1: Usuario
+##        2: Administrador
+##        3: Super-administrador
+####    Enterprises available:
+##        1: Empresa 1
+[SignupEmail] = gabriel.carrillo.lopez@everis.com
+[SignupUsername] = gabriel
+[SignupPassword] = gabriel
+[SignupRol] = 1
+[SignupEnterprise] = 1
+
+###### Insert here the INCORRECT user's mail (not containing an @), username (shorter than 6 characters) and password  (shorter than 6 characters)
+[WrongSignupEmail] = gabriel.carrillo.lopez.everis.com
+[WrongSignupUsername] = gabi
+[WrongSignupPassword] = gabi

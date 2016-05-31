@@ -5,31 +5,37 @@ AppBundle\Entity\Post:
     id:
         id:
             type: integer
-            nullable: false
-            unsigned: true
-            id: true
+            nullable: false                        
+            options:
+                unsigned: true
             generator:
                 strategy: IDENTITY
     fields:
         date:
             type: bigint
             nullable: false
-            unsigned: true
+            options:
+                unsigned: true
+        titulo:
+            type: string
+            length: 255
+            nullable: false                        
         description:
             type: text
-            nullable: false
-            length: 65535
-            fixed: false
-        userId:
-            type: integer
-            nullable: false
-            unsigned: true
-            column: user_id
-        manyToOne:
-            fk_userId:
-                targetEntity: AppBundle\Entity\User
-                joinColumn:
-                    name: userId
-                    referencedColumnName: id
-                    nullable: false
+            nullable: false                        
+    manyToOne:            
+        fk_userId:
+            targetEntity: AppBundle\Entity\User
+            joinColumn:
+                name: userId
+                referencedColumnName: id
+                nullable: false
+        fk_postId:
+            targetEntity: AppBundle\Entity\Post
+            joinColumn:
+                name: parentId
+                referencedColumnName: id
+                nullable: true
+                options:
+                    default: null
     lifecycleCallbacks: {  }

@@ -5,49 +5,25 @@ AppBundle\Entity\Document:
     id:
         id:
             type: integer
-            nullable: false
-            unsigned: true
-            id: true
+            nullable: false                        
+            options:
+                unsigned: true
             generator:
                 strategy: IDENTITY
     fields:
         originalName:
-            type: text
+            type: string
             nullable: false
-            length: 65535
-            fixed: false
-            column: original_name
+            length: 255                        
         name:
-            type: text
-            nullable: false
-            length: 65535
-            fixed: false
-        autor:
-            type: text
-            nullable: false
-            length: 65535
-            fixed: false
-        commentId:
-            type: integer
-            nullable: false
-            unsigned: true
-            column: comment_id
-        postId:
-            type: integer
-            nullable: false
-            unsigned: true
-            column: post_id
-        manyToOne:
-            fk_postId:
-                targetEntity: AppBundle\Entity\Post
-                joinColumn:
-                    name: postId
-                    referencedColumnName: id
-                    nullable: true
-            fk_commentId:
-                targetEntity: AppBundle\Entity\Comment
-                joinColumn:
-                    name: commentId
-                    referencedColumnName: id
-                    nullable: true
+            type: string
+            length: 255
+            nullable: false                            
+    manyToOne:
+        fk_postId:
+            targetEntity: AppBundle\Entity\Post
+            joinColumn:
+                name: postId
+                referencedColumnName: id
+                nullable: false
     lifecycleCallbacks: {  }

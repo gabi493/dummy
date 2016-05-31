@@ -1,0 +1,21 @@
+
+#   Crontab file for Home Directory for Gabriel Carrillo
+
+#-----------------------------------------------------------------------------
+
+#Min     Hour    Day     Month   Weekday Command
+
+#-----------------------------------------------------------------------------
+
+#0        *       *       *       *       /usr/bin/ksh /work1/jleffler/bin/Cron/hourly
+
+#1        1       *       *       *       /usr/bin/ksh /work1/jleffler/bin/Cron/daily
+
+#23       1       *       *       1-5     /usr/bin/ksh /work1/jleffler/bin/Cron/weekday
+
+#2        3       *       *       0       /usr/bin/ksh /work1/jleffler/bin/Cron/weekly
+
+#21       3       1       *       *       /usr/bin/ksh /work1/jleffler/bin/Cron/monthly
+
+#*/10     *       *       *       *       cd //Applications/XAMPP/htdocs/dummy/ && bin/behat features/login.feature --out web/tests_output/loginTestAction/salidaCron.txt
+

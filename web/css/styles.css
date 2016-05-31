@@ -1,5 +1,5 @@
 /* /dummy/web/css/styles.css */
-form {
+form.genericForm {
     /* Sólo para centrar el formulario a la página */
     margin: 300px auto;
     width: 300px;
@@ -25,6 +25,7 @@ label {
     text-align: center;
 }
 
+
 input {
     /* Para asegurarse de que todos los campos de texto tienen las mismas propiedades de fuente
        Por defecto, las areas de texto tienen una fuente con monospace */
@@ -39,6 +40,12 @@ input {
     border: 1px solid #999;
 }
 
+select {
+    font: 1em sans-serif;
+    height: 1em;
+    width: 200px;
+}
+
 input:focus {
     /* Para dar un pequeño destaque en elementos activos*/
     border-color: #000;
@@ -47,10 +54,61 @@ input:focus {
 .button {
     /* Para posicionar los botones a la misma posición que los campos de texto */
     /*padding-left: 90px;*/  /* mismo tamaño a todos los elementos label */
+    font: 1em sans-serif;
+    height: 1em;
 }
 button {
     /* Este margen extra representa aproximadamente el mismo espacio que el espacio
        entre los labels y sus campos de texto */
     /*margin-left: 3.5em;*/
     width: 300px;
+    font: 1em sans-serif;
+}
+
+/****/
+/****/
+
+BODY {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+} 
+
+/** containers **/
+
+.maincontainer {
+    width: 1100px;
+    margin: auto;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.profilecontainer {
+    padding: 15px;
+    border: 1px solid #CCCCCC;    
+}
+
+.postscontainer {
+    padding: 15px;
+    border: 1px solid #CCCCCC;
+}
+
+/** menu **/
+
+.menuitem {
+    padding: 15px;
+}
+.menuitem.selected {            
+    background-color: #CCCCCC;
+}
+.menuitem:hover {
+    background-color: #CCCCCC;
+}
+.menuitem a:link,
+.menuitem a:active,
+.menuitem a:hover,
+.menuitem a:visited {
+    color: #333333;
+    text-decoration: none;
 }

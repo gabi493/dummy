@@ -30,14 +30,14 @@ class User
     private $password;
 
     /**
-     * @var string
+     * @var \AppBundle\Entity\Enterprise
      */
-    private $rol;
+    private $fk_enterpriseId;
 
     /**
-     * @var integer
+     * @var \AppBundle\Entity\Rol
      */
-    private $enterpriseId;
+    private $fk_rolId;
 
 
     /**
@@ -120,76 +120,48 @@ class User
     }
 
     /**
-     * Set rol
+     * Set fk_enterpriseId
      *
-     * @param string $rol
+     * @param \AppBundle\Entity\Enterprise $fkEnterpriseId
      * @return User
      */
-    public function setRol($rol)
+    public function setFkEnterpriseId(\AppBundle\Entity\Enterprise $fkEnterpriseId)
     {
-        $this->rol = $rol;
+        $this->fk_enterpriseId = $fkEnterpriseId;
 
         return $this;
     }
 
     /**
-     * Get rol
+     * Get fk_enterpriseId
      *
-     * @return string 
+     * @return \AppBundle\Entity\Enterprise 
      */
-    public function getRol()
+    public function getFkEnterpriseId()
     {
-        return $this->rol;
+        return $this->fk_enterpriseId;
     }
 
     /**
-     * Set enterpriseId
+     * Set fk_rolId
      *
-     * @param integer $enterpriseId
+     * @param \AppBundle\Entity\Rol $fkRolId
      * @return User
      */
-    public function setEnterpriseId($enterpriseId)
+    public function setFkRolId(\AppBundle\Entity\Rol $fkRolId)
     {
-        $this->enterpriseId = $enterpriseId;
+        $this->fk_rolId = $fkRolId;
 
         return $this;
     }
 
     /**
-     * Get enterpriseId
+     * Get fk_rolId
      *
-     * @return integer 
+     * @return \AppBundle\Entity\Rol 
      */
-    public function getEnterpriseId()
+    public function getFkRolId()
     {
-        return $this->enterpriseId;
-    }
-    /**
-     * @var string
-     */
-    private $manyToOne;
-
-
-    /**
-     * Set manyToOne
-     *
-     * @param string $manyToOne
-     * @return User
-     */
-    public function setManyToOne($manyToOne)
-    {
-        $this->manyToOne = $manyToOne;
-
-        return $this;
-    }
-
-    /**
-     * Get manyToOne
-     *
-     * @return string 
-     */
-    public function getManyToOne()
-    {
-        return $this->manyToOne;
+        return $this->fk_rolId;
     }
 }

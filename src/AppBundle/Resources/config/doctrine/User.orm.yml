@@ -5,42 +5,35 @@ AppBundle\Entity\User:
     id:
         id:
             type: integer
-            nullable: false
-            unsigned: true
-            id: true
+            nullable: false                        
+            options:
+                unsigned: true
             generator:
                 strategy: IDENTITY
     fields:
         mail:
-            type: text
-            nullable: false
-            length: 65535
-            fixed: false
+            type: string
+            length: 255
+            nullable: false                        
         username:
-            type: text
-            nullable: false
-            length: 65535
-            fixed: false
+            type: string
+            length: 50
+            nullable: false                        
         password:
-            type: text
-            nullable: false
-            length: 65535
-            fixed: false
-        rol:
-            type: text
-            nullable: false
-            length: 65535
-            fixed: false
-        enterpriseId:
-            type: integer
-            nullable: false
-            unsigned: true
-            column: enterprise_id
-        manyToOne:
-            fk_enterpriseId:
-                targetEntity: AppBundle\Entity\Enterprise
-                joinColumn:
-                    name: enterpriseId
-                    referencedColumnName: id
-                    nullable: false
+            type: string
+            length: 16
+            nullable: false                                
+    manyToOne:
+        fk_enterpriseId:
+            targetEntity: AppBundle\Entity\Enterprise
+            joinColumn:
+                name: enterpriseId
+                referencedColumnName: id
+                nullable: false
+        fk_rolId:
+            targetEntity: AppBundle\Entity\Rol
+            joinColumn:
+                name: rolId
+                referencedColumnName: id
+                nullable: false
     lifecycleCallbacks: {  }

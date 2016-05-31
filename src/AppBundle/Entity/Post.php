@@ -22,12 +22,22 @@ class Post
     /**
      * @var string
      */
+    private $titulo;
+
+    /**
+     * @var string
+     */
     private $description;
 
     /**
-     * @var integer
+     * @var \AppBundle\Entity\User
      */
-    private $userId;
+    private $fk_userId;
+
+    /**
+     * @var \AppBundle\Entity\Post
+     */
+    private $fk_postId;
 
 
     /**
@@ -64,6 +74,29 @@ class Post
     }
 
     /**
+     * Set titulo
+     *
+     * @param string $titulo
+     * @return Post
+     */
+    public function setTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+
+        return $this;
+    }
+
+    /**
+     * Get titulo
+     *
+     * @return string 
+     */
+    public function getTitulo()
+    {
+        return $this->titulo;
+    }
+
+    /**
      * Set description
      *
      * @param string $description
@@ -87,53 +120,48 @@ class Post
     }
 
     /**
-     * Set userId
+     * Set fk_userId
      *
-     * @param integer $userId
+     * @param \AppBundle\Entity\User $fkUserId
      * @return Post
      */
-    public function setUserId($userId)
+    public function setFkUserId(\AppBundle\Entity\User $fkUserId)
     {
-        $this->userId = $userId;
+        $this->fk_userId = $fkUserId;
 
         return $this;
     }
 
     /**
-     * Get userId
+     * Get fk_userId
      *
-     * @return integer 
+     * @return \AppBundle\Entity\User 
      */
-    public function getUserId()
+    public function getFkUserId()
     {
-        return $this->userId;
+        return $this->fk_userId;
     }
-    /**
-     * @var string
-     */
-    private $manyToOne;
-
 
     /**
-     * Set manyToOne
+     * Set fk_postId
      *
-     * @param string $manyToOne
+     * @param \AppBundle\Entity\Post $fkPostId
      * @return Post
      */
-    public function setManyToOne($manyToOne)
+    public function setFkPostId(\AppBundle\Entity\Post $fkPostId = null)
     {
-        $this->manyToOne = $manyToOne;
+        $this->fk_postId = $fkPostId;
 
         return $this;
     }
 
     /**
-     * Get manyToOne
+     * Get fk_postId
      *
-     * @return string 
+     * @return \AppBundle\Entity\Post 
      */
-    public function getManyToOne()
+    public function getFkPostId()
     {
-        return $this->manyToOne;
+        return $this->fk_postId;
     }
 }
